@@ -15,3 +15,30 @@ public:
 		return pNew;	
 	}
 }
+
+//方法二
+//三个指针在链表上同时滑
+class Solution {
+public：
+	 ListNode* ReverseList(ListNode* pHead) {
+		 if(pHead==NULL)
+		 {
+			 return pHead;
+		 }
+		 if(pHead->next == NULL)
+		 {
+			 return pHead;
+		 }
+		 ListNode *pBefore = pHead,*p = pHead->next,pAfter = p->next;
+		 while(pAfter)
+		 {
+			 p->next = pBefore;
+			 pBefore = p;
+			 p = pAfter;
+			 pAfter = p->pAfter;
+		 }
+		 p->next = pBefore;
+		 pHead->next = NULL;
+		 return p;
+	 }
+}
